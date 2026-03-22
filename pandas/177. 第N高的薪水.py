@@ -55,6 +55,8 @@ def nth_highest_salary(employee: pd.DataFrame, N: int) -> pd.DataFrame:
   unique_salary = employee['salary'].drop_duplicates().sort_values(ascending = False)
   if N>len(unique_salary):
     results = None
+  elif N<=0:
+    results = None
   else:
     results = unique_salary.iloc[N-1]
   return pd.DataFrame({f'getNthHighestSalary({N})':[results]})
